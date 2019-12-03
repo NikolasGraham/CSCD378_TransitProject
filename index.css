@@ -11,6 +11,9 @@ h3 {
 
 table {
     width:100%;
+    color: black;
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 table, th, td {
@@ -24,7 +27,7 @@ th, td {
 }
 
 table#tinfo {
-    width: 50%;
+    width: 100%;
 }
 
 table#tinfo tr:nth-child(even) {
