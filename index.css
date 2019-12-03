@@ -26,19 +26,19 @@ th, td {
     text-align: left;
 }
 
-table#tinfo {
+table {
     width: 100%;
 }
 
-table#tinfo tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #7ba3e0;
 }
 
-table#tinfo tr:nth-child(odd) {
+table tr:nth-child(odd) {
    background-color: #a8cbff;
 }
 
-table#tinfo th {
+table th {
     background-color: black;
     color: white;
 }
