@@ -1,6 +1,6 @@
 :root{
-    --navbar-bg-color: #0d3678;
-    --main-bg-color: #06c;
+    --navbar-bg-color: #0a2247;
+    --main-bg-color: #0d3678;
     --h3-color: #0a2247;
     --table-color: black;
     --bgeven-color: #7ba3e0;
@@ -32,7 +32,7 @@
 }
 
 html, body {
-    background-color: var(--navbar-bg-color);
+    background-color: var(--main-bg-color);
 }
 
 h2 {
@@ -124,14 +124,9 @@ table th {
     text-align: center;
     font-weight: bolder;
 }
-<<<<<<< HEAD
 
 #navbar {
-    --box-bg-color: #0a2247;
-}
-
-#navbar {
-    background-color: var(--box-bg-color);
+    background-color: var(--navbar-bg-color);
     color: white;
     padding: 10px;
     text-align: center;
@@ -143,5 +138,3 @@ table th {
     float: left;
     color: black;
 }
-=======
->>>>>>> 18ea4b5257a414154e9392a0f9ea8b1c021b5be4

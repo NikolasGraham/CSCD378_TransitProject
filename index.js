@@ -13,28 +13,20 @@ function start() {
 }
 
 function confirmed() {
-<<<<<<< HEAD
-    //var elem = document.getElementById("clock");
-    //var elemSqu = document.getElementById("squ_NavBarColor");
-    //var style = window.getComputedStyle(elem, null).getPropertyValue("background-color");
-    //var declaration = document.styleSheets[0].rules[0].style
-    //declaration.setProperty('background-color', 'white');
-=======
-  document.documentElement.style.setProperty("--navbar-bg-color", $("#navBarColor").val());
-  document.documentElement.style.setProperty("--main-bg-color", $("#backgroundColor").val());
-  document.documentElement.style.setProperty("--table-color", $("#tableHeaderColor").val());
-  document.documentElement.style.setProperty("--bgodd-color", $("#firstRowColor").val());
-  document.documentElement.style.setProperty("--bgeven-color", $("#secondRowColor").val());
-  document.documentElement.style.setProperty("--alert-color", $("#alertColor").val());
->>>>>>> 18ea4b5257a414154e9392a0f9ea8b1c021b5be4
+    document.documentElement.style.setProperty("--navbar-bg-color", $("#navBarColor").val());
+    document.documentElement.style.setProperty("--main-bg-color", $("#backgroundColor").val());
+    document.documentElement.style.setProperty("--table-color", $("#tableHeaderColor").val());
+    document.documentElement.style.setProperty("--bgodd-color", $("#firstRowColor").val());
+    document.documentElement.style.setProperty("--bgeven-color", $("#secondRowColor").val());
+    document.documentElement.style.setProperty("--alert-color", $("#alertColor").val());
 }
 
 function clock() {
-	var date = new Date();
+    var date = new Date();
 
-	time = date.toLocaleTimeString("en-US");
-	
-	$("#clock").html(time);
+    time = date.toLocaleTimeString("en-US");
+
+    $("#clock").html(time);
 }
 
 function dissapear() {
@@ -43,7 +35,7 @@ function dissapear() {
     $("#stopInputs").hide();
 }
 
-$("button").click(function(){
+$("button").click(function () {
     console.log($(this).valu());
 })
 
@@ -80,9 +72,9 @@ function getDataFromAPI() {
             url: "arrivals-and-departures-for-stop.php",
             data: { stop_id: stopIds[i] },
             dataType: "json",
-          //success: function (data) {
-          //  allStopInfo.push(JSON.parse(data));
-          //}
+            //success: function (data) {
+            //  allStopInfo.push(JSON.parse(data));
+            //}
             success: stopDataFetched
         })
             .fail(function (jqXHR, textStatus, errorThrown) {
@@ -115,70 +107,70 @@ function updateAPI() {
 }
 
 function millisecondsToStr(milliseconds) {
-  minutes = Math.round(milliseconds / (1000 * 60));
-  ret = "";
-  if (minutes < 0 ) {
-    ret = "Departed";
-  }
-  else {
-    ret = minutes + " minutes";
-  }
-  return ret;
+    minutes = Math.round(milliseconds / (1000 * 60));
+    ret = "";
+    if (minutes < 0) {
+        ret = "Departed";
+    }
+    else {
+        ret = minutes + " minutes";
+    }
+    return ret;
 }
 
 function cleanStatus(string) {
-  if (string = "default") {
-    string = "On Time";
-  }
-  return string;
+    if (string = "default") {
+        string = "On Time";
+    }
+    return string;
 }
 
 function stopDataFetched(data) {
-  const masterContainer = $("#TableHolder");
-  console.log(data);
-  const stop_id = data.data.references.stops[0].id;
-  const stop_name = data.data.references.stops[0].name;
-  const currentTime = Number(data.currentTime);
-  console.log(data.currentTime);
-  console.log("currentTime is " + currentTime )
+    const masterContainer = $("#TableHolder");
+    console.log(data);
+    const stop_id = data.data.references.stops[0].id;
+    const stop_name = data.data.references.stops[0].name;
+    const currentTime = Number(data.currentTime);
+    console.log(data.currentTime);
+    console.log("currentTime is " + currentTime)
 
-  const stopContainer = $("<div>", {"class": "stopContainer", "id": "stopContainer_" + stop_id});
-  stopContainer.append($("<h5>",{"class": "stopHeader", "id": "stopHeader" + stop_id}).append(stop_name));
+    const stopContainer = $("<div>", { "class": "stopContainer", "id": "stopContainer_" + stop_id });
+    stopContainer.append($("<h5>", { "class": "stopHeader", "id": "stopHeader" + stop_id }).append(stop_name));
 
-  const stopTable = $("<table>",{"class": "stopTable", "id": "stopTable_" + stop_id});
-  const stopTableHeader = $("<tr>", {"class": "stopTableHeader", "id": "stopTableHeader_" + stop_id});
-  stopTableHeader.append($("<th>StopId</th><th>Route</th><th>Status</th><th>Departing in</th>"));
-  stopTable.append(stopTableHeader);
-  
-  for (arrival of data.data.entry.arrivalsAndDepartures) {
-    entry = $("<tr>", {"class": "stopTableEntry", "id": "stopTableEntry_" + stop_id});
+    const stopTable = $("<table>", { "class": "stopTable", "id": "stopTable_" + stop_id });
+    const stopTableHeader = $("<tr>", { "class": "stopTableHeader", "id": "stopTableHeader_" + stop_id });
+    stopTableHeader.append($("<th>StopId</th><th>Route</th><th>Status</th><th>Departing in</th>"));
+    stopTable.append(stopTableHeader);
 
-    route = $("<td>");
-    route.append(arrival.routeShortName);
-    entry.append(route);
+    for (arrival of data.data.entry.arrivalsAndDepartures) {
+        entry = $("<tr>", { "class": "stopTableEntry", "id": "stopTableEntry_" + stop_id });
 
-    let routeLongName = $("<td>")
-    console.log(arrival.routeLongName);
-    routeLongName.append(arrival.routeLongName);
-    entry.append(routeLongName);
+        route = $("<td>");
+        route.append(arrival.routeShortName);
+        entry.append(route);
 
-    stat = $("<td>");
-    stat.append(cleanStatus(arrival.status));
-    entry.append(stat);
+        let routeLongName = $("<td>")
+        console.log(arrival.routeLongName);
+        routeLongName.append(arrival.routeLongName);
+        entry.append(routeLongName);
 
-    time = $("<td>");
-    time.append(millisecondsToStr(Number(arrival.predictedDepartureTime) - currentTime));
-    entry.append(time);
+        stat = $("<td>");
+        stat.append(cleanStatus(arrival.status));
+        entry.append(stat);
 
-    stopTable.append(entry);
-  }
+        time = $("<td>");
+        time.append(millisecondsToStr(Number(arrival.predictedDepartureTime) - currentTime));
+        entry.append(time);
 
-  stopContainer.append(stopTable);
-  masterContainer.append(stopContainer);
+        stopTable.append(entry);
+    }
 
-  
-  console.log(stop_id);
-  console.log(stop_name);
+    stopContainer.append(stopTable);
+    masterContainer.append(stopContainer);
+
+
+    console.log(stop_id);
+    console.log(stop_name);
 }
 
 function updateTables(data) {
@@ -186,7 +178,7 @@ function updateTables(data) {
     const stop_id = data.data.references.stops[0].id;
     const stop_name = data.data.references.stops[0].name;
     const currentTime = Number(data.currentTime);
-    
+
     //stopContainer_ + stop_id
 
     const stopTable = $("<table>", { "class": "stopTable", "id": "stopTable_" + stop_id });
@@ -195,32 +187,32 @@ function updateTables(data) {
     stopTable.append(stopTableHeader);
 
     for (arrival of data.data.entry.arrivalsAndDepartures) {
-        entry = $("<tr>", {"class": "stopTableEntry", "id": "stopTableEntry_" + stop_id});
+        entry = $("<tr>", { "class": "stopTableEntry", "id": "stopTableEntry_" + stop_id });
 
-    route = $("<td>");
-    route.append(arrival.routeShortName);
-    entry.append(route);
+        route = $("<td>");
+        route.append(arrival.routeShortName);
+        entry.append(route);
 
-    let routeLongName = $("<td>")
-    console.log(arrival.routeLongName);
-    routeLongName.append(arrival.routeLongName);
-    entry.append(routeLongName);
+        let routeLongName = $("<td>")
+        console.log(arrival.routeLongName);
+        routeLongName.append(arrival.routeLongName);
+        entry.append(routeLongName);
 
-    stat = $("<td>");
-    stat.append(cleanStatus(arrival.status));
-    entry.append(stat);
+        stat = $("<td>");
+        stat.append(cleanStatus(arrival.status));
+        entry.append(stat);
 
-    let timeClass = "emptyClass";
-    let milli = Number(arrival.predictedDepartureTime) - currentTime;
-    let min = Math.round(milli / (1000 * 60));
-    if(min <= 2){
-        timeClass = currentColor;
-    }
-    time = $("<td>", {"class": timeClass});
-    time.append(millisecondsToStr(Number(arrival.predictedDepartureTime) - currentTime));
-    entry.append(time);
+        let timeClass = "emptyClass";
+        let milli = Number(arrival.predictedDepartureTime) - currentTime;
+        let min = Math.round(milli / (1000 * 60));
+        if (min <= 2) {
+            timeClass = currentColor;
+        }
+        time = $("<td>", { "class": timeClass });
+        time.append(millisecondsToStr(Number(arrival.predictedDepartureTime) - currentTime));
+        entry.append(time);
 
-    stopTable.append(entry);
+        stopTable.append(entry);
     }
 
     $("#stopContainer_" + stop_id).empty();
