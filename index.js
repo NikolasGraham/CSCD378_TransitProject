@@ -179,7 +179,6 @@ function updateTables(data) {
     entry.append(route);
 
     let routeLongName = $("<td>")
-    console.log(arrival.routeLongName);
     routeLongName.append(arrival.routeLongName);
     entry.append(routeLongName);
 
