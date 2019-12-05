@@ -6,10 +6,10 @@ stopIds = [];
 allStopInfo = [];
 
 function start() {
-    setInterval(updateClock, 1000);
+    setInterval(clock, 1000);
 }
 
-function updateClock() {
+function clock() {
 	var date = new Date();
 
 	time = date.toLocaleTimeString("en-US");
