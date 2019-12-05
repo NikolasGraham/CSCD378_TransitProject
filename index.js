@@ -6,24 +6,15 @@ stopIds = [];
 allStopInfo = [];
 
 function start() {
-    startClock();
+    setInterval(updateClock, 1000);
 }
 
-function startClock(){
-    $.ajax({
-        type: "GET",
-        url: "arrivals-and-departures-for-stop.php",
-        data: {stop_id: "STA_PZ1"},
-        success: function (data) {
-            console.log("made it!");
-            console.log(data);
-        }
-    })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
-        });
+function updateClock() {
+	var date = new Date();
+
+	time = date.toLocaleTimeString("en-US");
+	
+	$("#clock").html(time);	
 }
 
 function dissapear() {
@@ -52,14 +43,14 @@ function finish() {
 
 function getDataFromAPI() {
     //let stopid = "STA_PZ1";
-    for(i = 0; i < stopIds.length; i++){
+    for (i = 0; i < stopIds.length; i++) {
         $.ajax({
             type: "GET",
             url: "arrivals-and-departures-for-stop.php",
-            data: {stop_id: stopIds[i]},
+            data: { stop_id: stopIds[i] },
             success: function (data) {
-                console.log("made it!");
-                console.log(data);
+                console.log(data["currentTime"]);
+                allStopInfo.push(data);
             }
         })
             .fail(function (jqXHR, textStatus, errorThrown) {
