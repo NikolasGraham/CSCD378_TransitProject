@@ -13,12 +13,12 @@ function start() {
 }
 
 function confirmed() {
-    //var elem = document.getElementById("clock");
-    //var elemSqu = document.getElementById("squ_NavBarColor");
-    //var style = window.getComputedStyle(elem, null).getPropertyValue("background-color");
-    //var declaration = document.styleSheets[0].rules[0].style
-    //declaration.setProperty('background-color', 'white');
-
+  document.documentElement.style.setProperty("--navbar-bg-color", $("#navBarColor").val());
+  document.documentElement.style.setProperty("--main-bg-color", $("#backgroundColor").val());
+  document.documentElement.style.setProperty("--table-color", $("#tableHeaderColor").val());
+  document.documentElement.style.setProperty("--bgodd-color", $("#firstRowColor").val());
+  document.documentElement.style.setProperty("--bgeven-color", $("#secondRowColor").val());
+  document.documentElement.style.setProperty("--alert-color", $("#alertColor").val());
 }
 
 function clock() {
