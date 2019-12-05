@@ -6,6 +6,7 @@ stopIds = [];
 allStopInfo = [];
 departures = true;
 
+
 function start() {
     setInterval(clock, 1000);
 }
@@ -69,6 +70,7 @@ function getDataFromAPI() {
     }
 }
 
+<<<<<<< HEAD
 function updateAPI() {
     //let stopid = "STA_PZ1";
     for (i = 0; i < stopIds.length; i++) {
@@ -137,6 +139,73 @@ function stopDataFetched(data) {
 
     console.log(stop_id);
     console.log(stop_name);
+=======
+function millisecondsToStr(milliseconds) {
+  minutes = Math.round(milliseconds / (1000 * 60));
+  ret = "";
+  if (minutes < 0 ) {
+    ret = "Departed";
+  }
+  else {
+    ret = minutes + " minutes";
+  }
+  return ret;
+}
+
+function cleanStatus(string) {
+  if (string = "default") {
+    string = "";
+  }
+  return string;
+}
+
+function stopDataFetched(data) {
+  const masterContainer = $("#TableHolder");
+  console.log(data);
+  const stop_id = data.data.references.stops[0].id;
+  const stop_name = data.data.references.stops[0].name;
+  const currentTime = Number(data.currentTime);
+  console.log(data.currentTime);
+  console.log("currentTime is " + currentTime )
+
+  const stopContainer = $("<div>", {"class": "stopContainer", "id": "stopContainer_" + stop_id});
+  stopContainer.append($("<h5>",{"class": "stopHeader", "id": "stopHeader" + stop_id}).append(stop_name));
+
+  const stopTable = $("<table>",{"class": "stopTable", "id": "stopTable_" + stop_id});
+  const stopTableHeader = $("<tr>", {"class": "stopTableHeader", "id": "stopTableHeader_" + stop_id});
+  stopTableHeader.append($("<th>StopId</th><th>Route</th><th>Status</th><th>Departing in</th>"));
+  stopTable.append(stopTableHeader);
+  
+  for (arrival of data.data.entry.arrivalsAndDepartures) {
+    entry = $("<tr>", {"class": "stopTableEntry", "id": "stopTableEntry_" + stop_id});
+
+    route = $("<td>");
+    route.append(arrival.routeShortName);
+    entry.append(route);
+
+    let routeLongName = $("<td>")
+    console.log(arrival.routeLongName);
+    routeLongName.append(arrival.routeLongName);
+    entry.append(routeLongName);
+
+    stat = $("<td>");
+    stat.append(cleanStatus(arrival.status));
+    entry.append(stat);
+
+    time = $("<td>");
+    time.append(millisecondsToStr(Number(arrival.predictedDepartureTime) - currentTime));
+    entry.append(time);
+
+    stopTable.append(entry);
+  }
+
+  stopContainer.append(stopTable);
+  masterContainer.append(stopContainer);
+
+  
+  console.log(stop_id);
+  console.log(stop_name);
+>>>>>>> 6b29152f06d242e8b35d501c0de0c969ed3a41a1
 }
 
 function updateTables(data) {
