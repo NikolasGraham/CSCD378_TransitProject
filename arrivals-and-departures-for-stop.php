@@ -7,6 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     http_response_code(200);
     echo file_get_contents("http://52.88.188.196:8080/api/api/where/arrivals-and-departures-for-stop/$stop_id.json?key=$key");
   }
+  else {
+    echo "ERROR";
+  }
 }
 else {
   http_response_code(400);
