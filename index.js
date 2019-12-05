@@ -105,7 +105,7 @@ function millisecondsToStr(milliseconds) {
 
 function cleanStatus(string) {
   if (string = "default") {
-    string = "";
+    string = "On Time";
   }
   return string;
 }
