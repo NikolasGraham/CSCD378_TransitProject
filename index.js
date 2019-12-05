@@ -4,6 +4,7 @@ $(document).ready(start);
 stopCount = 1;
 stopIds = [];
 allStopInfo = [];
+departures = true;
 
 function start() {
     setInterval(clock, 1000);
@@ -37,8 +38,8 @@ function finish() {
         stopIds.push($("#input" + i).val());
     }
     dissapear();
-    getDataFromAPI();
-    populateTables();
+  getDataFromAPI();
+  //populateTables();
 }
 
 function getDataFromAPI() {
@@ -48,9 +49,11 @@ function getDataFromAPI() {
             type: "GET",
             url: "arrivals-and-departures-for-stop.php",
             data: { stop_id: stopIds[i] },
-            success: function (data) {
-                allStopInfo.push(JSON.parse(data));
-            }
+            dataType: "json",
+          //success: function (data) {
+          //  allStopInfo.push(JSON.parse(data));
+          //}
+            success: stopDataFetched
         })
             .fail(function (jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR);
@@ -60,6 +63,55 @@ function getDataFromAPI() {
     }
 }
 
+function stopDataFetched(data) {
+  const masterContainer = $("#TableHolder");
+  console.log(data);
+  const stop_id = data.data.references.stops[0].id;
+  const stop_name = data.data.references.stops[0].name;
+  const currentTime = Number(data.data.currentTime);
+
+  const stopContainer = $("<div>", {"class": "stopContainer", "id": "stopContainer_" + stop_id});
+  stopContainer.append($("<h5>",{"class": "stopHeader", "id": "stopHeader" + stop_id}).append(stop_name));
+
+  const stopTable = $("<table>",{"class": "stopTable", "id": "stopTable_" + stop_id});
+  const stopTableHeader = $("<tr>", {"class": "stopTableHeader", "id": "stopTableHeader_" + stop_id});
+  stopTableHeader.append($("<th>Route</th><th>Status</th><th>Departing in</th>"));
+  stopTable.append(stopTableHeader);
+  
+  for (arrival of data.data.entry.arrivalsAndDepartures) {
+    console.log(arrival);
+    entry = $("<tr>", {"class": "stopTableEntry", "id": "stopTableEntry_" + stop_id});
+
+    route = $("<td>");
+    console.log(arrival.routeId);
+    route.append(arrival.routeId);
+    entry.append(route);
+
+    stat = $("<td>");
+    entry.append(stat);
+
+    time = $("<td>");
+    console.log(Number(arrival.predictedArrivalTime) - currentTime);
+    time.append(Number(arrival.predictedArrivalTime) - currentTime);
+    entry.append(time);
+
+    stopTable.append(entry);
+  }
+
+  stopContainer.append(stopTable);
+  masterContainer.append(stopContainer);
+
+  
+  console.log(stop_id);
+  console.log(stop_name);
+}
+
 function populateTables() {
     console.log(allStopInfo);
+    console.log(allStopInfo[0]);
+    
+    for (entry of allStopInfo) {
+      console.log(entry);
+    }
+    console.log("what!");
 }
