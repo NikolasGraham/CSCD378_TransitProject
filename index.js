@@ -5,6 +5,7 @@ stopCount = 1;
 stopIds = [];
 allStopInfo = [];
 departures = true;
+currentColor = "white"
 
 
 function start() {
@@ -23,6 +24,10 @@ function dissapear() {
     $("#addInput").hide();
     $("#stopInputs").hide();
 }
+
+$("button").click(function(){
+    console.log($(this).valu());
+})
 
 function addStop() {
     $("#stopInputs").append(
@@ -186,7 +191,13 @@ function updateTables(data) {
     stat.append(cleanStatus(arrival.status));
     entry.append(stat);
 
-    time = $("<td>");
+    let timeClass = "emptyClass";
+    let milli = Number(arrival.predictedDepartureTime) - currentTime;
+    let min = Math.round(milli / (1000 * 60));
+    if(min <= 2){
+        timeClass = currentColor;
+    }
+    time = $("<td>", {"class": timeClass});
     time.append(millisecondsToStr(Number(arrival.predictedDepartureTime) - currentTime));
     entry.append(time);
 

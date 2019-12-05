@@ -1,5 +1,43 @@
+/* :root{
+    --main-bg-color: #0d3678;
+    --main-txt-color: #333;
+    --container-width: 90%;
+    --h3-color: #0a2247;
+    --table-color: black;
+    --bgeven-color: #7ba3e0;
+    --bgodd-color:#a8cbff;
+    --white-color: white;
+    --width-width: 100%;
+} */
+/*The white box will be on the front of blue background*/
+.white{
+    --box-bg-color: rgb(172, 16, 16);
+    --box-main-color: #06c;
+    --box-padding: 5px 10px;
+    --box-shadow-h-offset: 10px;
+    --box-shadow-v-offset: 5px;
+    --box-shadow-blur: 5px;
+}
+
+/*The white box's*/
+.white{
+    background-color: var(--box-bg-color);
+    padding: var(--box-padding);
+    border: 1px solid var(--box-main-color);
+    box-shadow: 
+        var(--box-shadow-h-offset) 
+        var(--box-shadow-v-offset) 
+        var(--box-shadow-blur)
+        var(--box-main-color);
+}
+
 html, body {
     background-color: #0d3678;
+}
+
+h2 {
+    color: white;
+    font-weight: bolder;
 }
 
 h3 {
@@ -50,10 +88,28 @@ table th {
     color: white;
 }
 
+.normalButton {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .square {
+    height: 50px;
+    width: 50px;
+    background-color: white;;
+  }
+
 #stopNumberForm {
     color: white;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: bolder;
     padding: 10px;
     width: 250px;
 }
@@ -63,4 +119,13 @@ table th {
     font-size: 40px;
     text-align: center;
     font-weight: bolder;
+}
+
+#btnWhite {
+    background-color: white;
+    color: black;
+}
+
+#btnRed {
+    background-color: #f44336;
 }
