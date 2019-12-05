@@ -40,17 +40,6 @@ h2 {
     font-weight: bolder;
 }
 
-h3 {
-    --box-bg-color: #0a2247;
-}
-
-h3 {
-    background-color: var(--box-bg-color);
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
 h5 {
     color: white;
     font-size: 36px;
@@ -119,10 +108,22 @@ table th {
 }
 
 #clock {
+    display: inline-block;
     color: white;
     font-size: 40px;
     text-align: center;
     font-weight: bolder;
+}
+
+#navbar {
+    --box-bg-color: #0a2247;
+}
+
+#navbar {
+    background-color: var(--box-bg-color);
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
 #btnWhite {
@@ -132,4 +133,11 @@ table th {
 
 #btnRed {
     background-color: #f44336;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    float: left;
+    color: black;
 }
