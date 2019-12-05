@@ -14,21 +14,21 @@
     --box-bg-color: rgb(172, 16, 16);
     --box-main-color: #06c;
     --box-padding: 5px 10px;
-    --box-shadow-h-offset: 10px;
+    /* --box-shadow-h-offset: 10px;
     --box-shadow-v-offset: 5px;
-    --box-shadow-blur: 5px;
-}
+    --box-shadow-blur: 5px;*/
+} 
 
 /*The white box's*/
 .white{
     background-color: var(--box-bg-color);
     padding: var(--box-padding);
     border: 1px solid var(--box-main-color);
-    box-shadow: 
+    /* box-shadow: 
         var(--box-shadow-h-offset) 
         var(--box-shadow-v-offset) 
         var(--box-shadow-blur)
-        var(--box-main-color);
+        var(--box-main-color); */
 }
 
 html, body {
@@ -41,7 +41,7 @@ h2 {
 }
 
 h3 {
-    --box-bg-color:#0a2247;
+    --box-bg-color: #0a2247;
 }
 
 h3 {

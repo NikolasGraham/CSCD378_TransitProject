@@ -12,16 +12,23 @@ function start() {
     setInterval(clock, 1000);
 }
 
+function confirmed() {
+    var elem = document.getElementById("squ_NavBarColor");
+    var style = window.getComputedStyle(ele, null);
+    var value = style.getPropertyValue(property);
+}
+
 function clock() {
 	var date = new Date();
 
 	time = date.toLocaleTimeString("en-US");
 	
-	$("#clock").html(time);	
+	$("#clock").html(time);
 }
 
 function dissapear() {
     $("#addInput").hide();
+    $("#addColorInput").hide();
     $("#stopInputs").hide();
 }
 
