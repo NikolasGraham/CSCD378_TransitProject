@@ -49,8 +49,7 @@ function getDataFromAPI() {
             url: "arrivals-and-departures-for-stop.php",
             data: { stop_id: stopIds[i] },
             success: function (data) {
-                console.log(data["currentTime"]);
-                allStopInfo.push(data);
+                allStopInfo.push(JSON.parse(data));
             }
         })
             .fail(function (jqXHR, textStatus, errorThrown) {
@@ -62,5 +61,5 @@ function getDataFromAPI() {
 }
 
 function populateTables() {
-
+    console.log(allStopInfo);
 }
