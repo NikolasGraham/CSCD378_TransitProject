@@ -9,6 +9,13 @@ h3 {
     text-align: center;
 }
 
+h5 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    font-weight: bolder;
+}
+
 table {
     width:100%;
     color: black;
