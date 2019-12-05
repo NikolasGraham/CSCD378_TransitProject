@@ -9,30 +9,24 @@ function start() {
 }
 
 function dissapear() {
-    var x = document.getElementById("stopNumberInput");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-
-    $("#stopInputs")
+    $("#addInput").hide();
+    $("#stopInputs").hide();
 }
 
 function addStop() {
     $("#stopInputs").append(
         '<div class="input-group mb-3" id="stopNumberForm">'
             +'<label>Stop '+stopCount+':</label>'
-            +'<input type="text" class="form-control" id=input"'+stopCount+'" placeholder="...">'
+            +'<input type="text" class="form-control" id="input'+stopCount+'" placeholder="Stop Id...">'
         +'</div>'
     )
-    console.log("made it" + stopCount);
     stopCount++;
 }
-
+//$("#input" + i).val()
 function finish(){
-    for(i=1; i < stopCount+1; i++){
+    for(i=1; i < stopCount; i++){
         stopCodes.push($("#input" + i).val());
     }
+    dissapear();
     console.log(stopCodes);
 }
