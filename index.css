@@ -41,7 +41,11 @@ h2 {
 }
 
 h3 {
-    background-color: #0a2247;
+    --box-bg-color:#0a2247;
+}
+
+h3 {
+    background-color: var(--box-bg-color);
     color: white;
     padding: 10px;
     text-align: center;
