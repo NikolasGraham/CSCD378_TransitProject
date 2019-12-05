@@ -183,7 +183,7 @@ function updateTables(data) {
 
     const stopTable = $("<table>", { "class": "stopTable", "id": "stopTable_" + stop_id });
     const stopTableHeader = $("<tr>", { "class": "stopTableHeader", "id": "stopTableHeader_" + stop_id });
-    stopTableHeader.append($("<th>StopId</th><th>Route</th><th>Status</th><th>Departing in</th>"));
+    stopTableHeader.append($("<th>Route #</th><th>Route</th><th>Status</th><th>Departing in</th>"));
     stopTable.append(stopTableHeader);
 
     for (arrival of data.data.entry.arrivalsAndDepartures) {
@@ -194,7 +194,6 @@ function updateTables(data) {
     entry.append(route);
 
     let routeLongName = $("<td>")
-    console.log(arrival.routeLongName);
     routeLongName.append(arrival.routeLongName);
     entry.append(routeLongName);
 
