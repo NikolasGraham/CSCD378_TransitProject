@@ -13,9 +13,12 @@ function start() {
 }
 
 function confirmed() {
-    var elem = document.getElementById("squ_NavBarColor");
-    var style = window.getComputedStyle(ele, null);
-    var value = style.getPropertyValue(property);
+    //var elem = document.getElementById("clock");
+    //var elemSqu = document.getElementById("squ_NavBarColor");
+    //var style = window.getComputedStyle(elem, null).getPropertyValue("background-color");
+    //var declaration = document.styleSheets[0].rules[0].style
+    //declaration.setProperty('background-color', 'white');
+
 }
 
 function clock() {
