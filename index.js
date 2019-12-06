@@ -1,3 +1,8 @@
+//Team - Authors
+//Nikolas Graham
+//Scott Shoup
+//Suharto Suharto
+
 $(document).ready(start);
 
 //Starts at "1" not 0..
