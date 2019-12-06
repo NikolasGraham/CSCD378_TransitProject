@@ -58,10 +58,10 @@ function finish() {
     getDataFromAPI();
     dissapear();
     setInterval(updateAPI, 1000);
+  confirmed();
 }
 
 function setData() {
-    console.log("T");
     updateTables();
     $("#TableHolder").empty();
 }
@@ -129,12 +129,9 @@ function cleanStatus(string) {
 
 function stopDataFetched(data) {
     const masterContainer = $("#TableHolder");
-    console.log(data);
     const stop_id = data.data.references.stops[0].id;
     const stop_name = data.data.references.stops[0].name;
     const currentTime = Number(data.currentTime);
-    console.log(data.currentTime);
-    console.log("currentTime is " + currentTime)
 
     const stopContainer = $("<div>", { "class": "stopContainer", "id": "stopContainer_" + stop_id });
     stopContainer.append($("<h5>", { "class": "stopHeader", "id": "stopHeader" + stop_id }).append(stop_name));
@@ -152,7 +149,6 @@ function stopDataFetched(data) {
         entry.append(route);
 
         let routeLongName = $("<td>")
-        console.log(arrival.routeLongName);
         routeLongName.append(arrival.routeLongName);
         entry.append(routeLongName);
 
@@ -169,10 +165,6 @@ function stopDataFetched(data) {
 
     stopContainer.append(stopTable);
     masterContainer.append(stopContainer);
-
-
-    console.log(stop_id);
-    console.log(stop_name);
 }
 
 function updateTables(data) {
@@ -196,7 +188,6 @@ function updateTables(data) {
         entry.append(route);
 
         let routeLongName = $("<td>")
-        console.log(arrival.routeLongName);
         routeLongName.append(arrival.routeLongName);
         entry.append(routeLongName);
 
