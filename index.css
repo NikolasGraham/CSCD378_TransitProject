@@ -1,7 +1,6 @@
 :root{
     --navbar-bg-color: #0a2247;
     --main-bg-color: #0d3678;
-    --h3-color: #0a2247;
     --table-color: black;
     --bgeven-color: #7ba3e0;
     --bgodd-color:#a8cbff;
@@ -36,23 +35,12 @@ html, body {
 }
 
 h2 {
-    color: white;
+    color: var(--white-color);
     font-weight: bolder;
 }
 
-h3 {
-    --box-bg-color: val(--h3-color);
-}
-
-h3 {
-    background-color: var(--box-bg-color);
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
 h5 {
-    color: white;
+    color: var(--white-color);
     font-size: 36px;
     text-align: center;
     font-weight: bolder;
@@ -60,7 +48,7 @@ h5 {
 
 table {
     width:100%;
-    color: var(--table-color);
+    color: var(--main-txt-color);
     font-size: 18px;
     font-weight: bolder;
 }
@@ -89,12 +77,12 @@ table tr:nth-child(odd) {
 
 table th {
     background-color: var(--table-color);
-    color: white;
+    color: var(--white-color);
 }
 
 .normalButton {
     border: none;
-    color: white;
+    color: var(--white-color);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -107,11 +95,11 @@ table th {
   .square {
     height: 50px;
     width: 50px;
-    background-color: white;;
+    background-color: var(--white-color);
   }
 
 #stopNumberForm {
-    color: white;
+    color: var(--white-color);
     font-size: 24px;
     font-weight: bolder;
     padding: 10px;
@@ -119,7 +107,7 @@ table th {
 }
 
 #clock {
-    color: white;
+    color: var(--white-color);
     font-size: 40px;
     text-align: center;
     font-weight: bolder;
