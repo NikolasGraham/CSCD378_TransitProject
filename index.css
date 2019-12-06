@@ -95,7 +95,7 @@ table th {
   .square {
     height: 50px;
     width: 50px;
-    background-color: var(--white-color);
+    background-color: white;
   }
 
 #stopNumberForm {
@@ -121,8 +121,8 @@ table th {
 }
 
 #logo {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     float: left;
     color: black;
 }

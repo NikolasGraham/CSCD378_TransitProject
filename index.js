@@ -13,7 +13,6 @@ function start() {
 }
 
 function confirmed() {
-<<<<<<< HEAD
   document.documentElement.style.setProperty("--navbar-bg-color", $("#navBarColor").val());
   document.documentElement.style.setProperty("--main-bg-color", $("#backgroundColor").val());
   document.documentElement.style.setProperty("--table-color", $("#tableHeaderColor").val());
@@ -22,14 +21,6 @@ function confirmed() {
   document.documentElement.style.setProperty("--alert-color", $("#alertColor").val());
   document.documentElement.style.setProperty("--main-txt-color", $("#darkTextColor").val());
   document.documentElement.style.setProperty("--white-color", $("#lightTextColor").val());
-=======
-    document.documentElement.style.setProperty("--navbar-bg-color", $("#navBarColor").val());
-    document.documentElement.style.setProperty("--main-bg-color", $("#backgroundColor").val());
-    document.documentElement.style.setProperty("--table-color", $("#tableHeaderColor").val());
-    document.documentElement.style.setProperty("--bgodd-color", $("#firstRowColor").val());
-    document.documentElement.style.setProperty("--bgeven-color", $("#secondRowColor").val());
-    document.documentElement.style.setProperty("--alert-color", $("#alertColor").val());
->>>>>>> b3db4c10e82857f8552090ff003ef35ae56a6a07
 }
 
 function clock() {
