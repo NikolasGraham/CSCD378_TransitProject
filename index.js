@@ -19,6 +19,8 @@ function confirmed() {
   document.documentElement.style.setProperty("--bgodd-color", $("#firstRowColor").val());
   document.documentElement.style.setProperty("--bgeven-color", $("#secondRowColor").val());
   document.documentElement.style.setProperty("--alert-color", $("#alertColor").val());
+  document.documentElement.style.setProperty("--main-txt-color", $("#darkTextColor").val());
+  document.documentElement.style.setProperty("--white-color", $("#lightTextColor").val());
 }
 
 function clock() {
