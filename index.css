@@ -1,6 +1,6 @@
 :root{
-    --navbar-bg-color: #0d3678;
-    --main-bg-color: #06c;
+    --navbar-bg-color: #0a2247;
+    --main-bg-color: #0d3678;
     --table-color: black;
     --bgeven-color: #7ba3e0;
     --bgodd-color:#a8cbff;
@@ -31,7 +31,7 @@
 }
 
 html, body {
-    background-color: var(--navbar-bg-color);
+    background-color: var(--main-bg-color);
 }
 
 h2 {
@@ -111,4 +111,18 @@ table th {
     font-size: 40px;
     text-align: center;
     font-weight: bolder;
+}
+
+#navbar {
+    background-color: var(--navbar-bg-color);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    float: left;
+    color: black;
 }
